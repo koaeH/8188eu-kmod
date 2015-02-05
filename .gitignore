@@ -1,0 +1,6 @@
+*~
+*.swp
+BUILD/
+BUILDROOT/
+SRPMS/
+RPMS/
