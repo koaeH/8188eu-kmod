@@ -1,6 +1,6 @@
 Name:          8188eu-kmod
 Version:       4.3.0.7_12758.20141114
-Release:       2%{?dist}
+Release:       3%{?dist}
 Summary:       Realtek RTL8188EUS Linux Driver
 URL:           http://www.realtek.com.tw/products
 Group:         System Environment/Kernel 
@@ -13,11 +13,11 @@ Patch001:      8188eu-kmod-better-gcc-optimization.patch
 
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: %{_bindir}/kmodtool
-ExclusiveArch: i686 x86_64
+ExclusiveArch: i686 x86_64 %{arm}
 
 %global buildforkernels newest
-%{!?kernels:BuildRequires: buildsys-build-labnet-kerneldevpkgs-%{?buildforkernels:%{buildforkernels}}%{!?buildforkernels:current}-%{_target_cpu}}
-%{expand:%(kmodtool --target %{_target_cpu} --repo labnet --kmodname %{name} %{?buildforkernels:--%{buildforkernels}} %{?kernels:--for-kernels "%{?kernels}"} 2>/dev/null)}
+%{!?kernels:BuildRequires: buildsys-build-rpmfusion-kerneldevpkgs-%{?buildforkernels:%{buildforkernels}}%{!?buildforkernels:current}-%{_target_cpu}}
+%{expand:%(kmodtool --target %{_target_cpu} --repo rpmfusion --kmodname %{name} %{?buildforkernels:--%{buildforkernels}} %{?kernels:--for-kernels "%{?kernels}"} 2>/dev/null)}
 
 %description
 This package provides Realtek's RTL8188EUS single-chip IEEE 802.11b/g/n WLAN 
@@ -29,7 +29,7 @@ same driver as the one from the linux kernel staging area.
 %{?kmodtool_check}
 kmodtool \
   --target %{_target_cpu} \
-  --repo labnet --kmodname %{name} \
+  --repo rpmfusion --kmodname %{name} \
   %{?buildforkernels:--%{buildforkernels}} \
   %{?kernels:--for-kernels "%{?kernels}"} 2>/dev/null
 
@@ -68,6 +68,10 @@ done
 rm -r -f $RPM_BUILD_ROOT
 
 %changelog
+* Sun Mar 22 2015 Marcelo 'codeN' Gonzalez <koaeH@aol.com> - 4.3.0.7-3
+- Rebuild for kernel 3.19.1-201.fc21
+- Migrate back to RPM Fusion
+
 * Fri Feb 20 2015 Marcelo 'codeN' Gonzalez <koaeH@aol.com> - 4.3.0.7-2
 - Rebuild for kernel 3.18.7-200.fc21
 
