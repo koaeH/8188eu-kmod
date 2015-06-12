@@ -1,6 +1,6 @@
 Name:          8188eu-kmod
-Version:       4.3.0.7_12758.20141114
-Release:       4%{?dist}
+Version:       4.3.0.8_13968.20150417
+Release:       0%{?dist}
 Summary:       Realtek RTL8188EUS Linux Driver
 URL:           http://www.realtek.com.tw/products
 Group:         System Environment/Kernel 
@@ -8,8 +8,9 @@ License:       GPLv2
 
 Source0:       rtl8188EUS_linux_v%{version}.tar.gz
 
-Patch000:      8188eu-kmod-ignore-gcc-date-time-warning.patch
-Patch001:      8188eu-kmod-better-gcc-optimization.patch
+Patch000:      8188eu-kmod-better-gcc-optimization.patch
+Patch001:      8188eu-kmod-ignore-gcc-date-time-warning.patch
+Patch002:      8188eu-kmod-ignore-gcc-implicit-func-decl.patch
 
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: %{_bindir}/kmodtool
@@ -36,8 +37,9 @@ kmodtool \
 %setup -q -c -T
 tar xf %{SOURCE0}
 pushd rtl8188EUS_linux_v%{version}
-%patch000 -p1 -b .ignore-gcc-date-time-warning
-%patch001 -p1 -b .better-gcc-optimization
+%patch000 -p1 -b .better-gcc-optimization
+%patch001 -p1 -b .ignore-gcc-date-time-warning
+%patch002 -p1 -b .ignore-gcc-implicit-func-decl
 popd
 
 for kernel_version in %{?kernel_versions}; do
@@ -68,6 +70,10 @@ done
 rm -r -f $RPM_BUILD_ROOT
 
 %changelog
+* Thu Jun 11 2015 Marcelo 'codeN' Gonzalez <koaeH@aol.com> - 4.3.0.8-0
+- Update to RTL8188EUS_linux_v4.3.0.8_13968.20150417
+- Rebuild for kernel 4.0.4-202.fc21
+
 * Wed May 13 2015 Marcelo 'codeN' Gonzalez <koaeH@aol.com> - 4.3.0.7-4
 - Rebuild for kernel 3.19.5-200.fc21
 
