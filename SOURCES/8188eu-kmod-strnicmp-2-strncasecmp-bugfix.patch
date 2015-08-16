@@ -1,0 +1,13 @@
+--- rtl8188EUS_linux_v4.3.0.8_13968.20150417/os_dep/linux/rtw_android.c	2015-04-17 03:54:43.000000000 -0300
++++ rtl8188EUS_linux_v4.3.0.8_13968.20150417/os_dep/linux/rtw_android.c	2015-08-16 01:00:25.476646987 -0300
+@@ -38,6 +38,10 @@
+ #include <linux/irq.h>
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,0,0)
++#define strnicmp strncasecmp
++#endif
++
+ extern void macstr2num(u8 *dst, u8 *src);
+ 
+ const char *android_wifi_cmd_str[ANDROID_WIFI_CMD_MAX] = {
