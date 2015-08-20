@@ -1,6 +1,6 @@
 Name:          realtek-8188eu
 Version:       4.3.0.8_13968.20150417
-Release:       4%{?dist}
+Release:       5%{?dist}
 Summary:       Common files for Realtek RTL8188EUS Linux Driver
 URL:           http://www.realtek.com.tw/products
 Group:         System Environment/Kernel 
@@ -42,9 +42,6 @@ rm -r -f $RPM_BUILD_ROOT
 %changelog
 * Thu Jun 11 2015 Marcelo 'codeN' Gonzalez <koaeH@aol.com> - 4.3.0.8-0
 - Update to RTL8188EUS_linux_v4.3.0.8_13968.20150417
-
-* Sun Feb 08 2015 Marcelo 'codeN' Gonzalez <koaeH@aol.com> - 4.3.0.7-1
-- Migrate from RPM Fusion to LABNET Repository
 
 * Thu Feb 05 2015 Marcelo 'codeN' Gonzalez <koaeH@aol.com> - 4.3.0.7-0
 - Update to RTL8188EUS_linux_v4.3.0.7_12758.20141114.tar.gz
