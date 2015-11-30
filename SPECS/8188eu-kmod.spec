@@ -1,6 +1,6 @@
 Name:          8188eu-kmod
 Version:       4.3.0.8_13968.20150417
-Release:       5%{?dist}
+Release:       6%{?dist}
 Summary:       Realtek RTL8188EUS Linux Driver
 URL:           http://www.realtek.com.tw/products
 Group:         System Environment/Kernel 
@@ -12,6 +12,7 @@ Patch000:      8188eu-kmod-better-gcc-optimization.patch
 Patch001:      8188eu-kmod-ignore-gcc-date-time-warning.patch
 Patch002:      8188eu-kmod-ignore-gcc-implicit-func-decl.patch
 Patch003:      8188eu-kmod-strnicmp-2-strncasecmp-bugfix.patch
+Patch004:      8188eu-kmod-rename-used-var-phy_file_path.patch
 
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: %{_bindir}/kmodtool
@@ -42,6 +43,7 @@ pushd rtl8188EUS_linux_v%{version}
 %patch001 -p1 -b .ignore-gcc-date-time-warning
 %patch002 -p1 -b .ignore-gcc-implicit-func-decl
 %patch003 -p1 -b .strnicmp-2-strncasecmp-bugfix
+%patch004 -p1 -b .rename-used-var-phy_file_path
 popd
 
 for kernel_version in %{?kernel_versions}; do
@@ -72,6 +74,10 @@ done
 rm -r -f $RPM_BUILD_ROOT
 
 %changelog
+* Mon Nov 30 2015 Marcelo 'codeN' Gonzalez <koaeH@aol.com> - 4.3.0.8-6
+- Rebuild for kernel 4.2.6-200.fc22
+- Patch s/file_path/phy_file_path/ @hal/hal_com_phycfg.c
+
 * Thu Aug 20 2015 Marcelo 'codeN' Gonzalez <koaeH@aol.com> - 4.3.0.8-5
 - Rebuild for kernel 4.1.5-200.fc22
 
