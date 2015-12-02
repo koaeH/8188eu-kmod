@@ -1,6 +1,6 @@
 Name:          realtek-8188eu
 Version:       4.3.0.8_13968.20150417
-Release:       6%{?dist}
+Release:       7%{?dist}
 Summary:       Common files for Realtek RTL8188EUS Linux Driver
 URL:           http://www.realtek.com.tw/products
 Group:         System Environment/Kernel 
