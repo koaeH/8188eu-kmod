@@ -1,6 +1,6 @@
 Name:          realtek-8188eu
 Version:       4.3.0.8_13968.20150417
-Release:       8%{?dist}
+Release:       9%{?dist}
 Summary:       Common files for Realtek RTL8188EUS Linux Driver
 URL:           http://www.realtek.com.tw/products
 Group:         System Environment/Kernel 
@@ -19,8 +19,8 @@ Conflicts:     kmod-staging
 %description
 This package provides Realtek's RTL8188EUS single-chip IEEE 802.11b/g/n WLAN 
 controller with USB2.0 interface linux driver. Common wireless USB adapters
-containing this chip are TL-WN725N, CF-WU712P and RT5370. This is not the
-same driver as the one from the linux kernel staging area.
+containing this chip are TL-WN725N, CF-WU712P and RT5370. N.B. This is not
+the same driver as the one from the linux kernel staging area.
 
 %prep
 %setup -q -c -T
