@@ -1,6 +1,6 @@
 Name:          8188eu-kmod
 Version:       4.3.0.8_13968.20150417
-Release:       18%{?dist}
+Release:       19%{?dist}
 Summary:       Realtek RTL8188EUS Linux Driver
 URL:           http://www.realtek.com.tw/products
 Group:         System Environment/Kernel 
@@ -76,6 +76,9 @@ done
 rm -r -f $RPM_BUILD_ROOT
 
 %changelog
+* Thu Mar 24 2016 Marcelo 'codeN' Gonzalez <koaeH@aol.com> - 4.3.0.8-19
+- Rebuild for kernel-4.4.6-300.fc23
+
 * Sun Mar 20 2016 Marcelo 'codeN' Gonzalez <koaeH@aol.com> - 4.3.0.8-18
 - Rebuild for kernel-4.4.5-300.fc23
 
