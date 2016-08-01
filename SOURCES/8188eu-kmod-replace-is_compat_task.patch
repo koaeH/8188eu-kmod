@@ -1,0 +1,11 @@
+--- rtl8188EUS_linux_v4.3.0.8_13968.20150417/os_dep/linux/rtw_android.c	2016-07-23 15:35:08.654551087 -0400
++++ rtl8188EUS_linux_v4.3.0.8_13968.20150417/os_dep/linux/rtw_android.c	2016-07-23 15:36:10.855549506 -0400
+@@ -512,7 +512,7 @@ int rtw_android_priv_cmd(struct net_devi
+ 		goto exit;
+ 	}
+ #ifdef CONFIG_COMPAT
+-	if (is_compat_task()) {
++	if (in_compat_syscall()) {
+ 		/* User space is 32-bit, use compat ioctl */
+ 		compat_android_wifi_priv_cmd compat_priv_cmd;
+ 

@@ -1,6 +1,6 @@
 Name:          8188eu-kmod
 Version:       4.3.0.8_13968.20150417
-Release:       20%{?dist}
+Release:       21%{?dist}
 Summary:       Realtek RTL8188EUS Linux Driver
 URL:           http://www.realtek.com.tw/products
 Group:         System Environment/Kernel 
@@ -14,6 +14,7 @@ Patch002:      8188eu-kmod-ignore-gcc-implicit-func-decl.patch
 Patch003:      8188eu-kmod-strnicmp-2-strncasecmp-bugfix.patch
 Patch004:      8188eu-kmod-rename-used-var-phy_file_path.patch
 Patch005:      8188eu-kmod-seqdump-missing-return-value.patch
+Patch006:      8188eu-kmod-replace-is_compat_task.patch
 
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: %{_bindir}/kmodtool
@@ -46,6 +47,7 @@ pushd rtl8188EUS_linux_v%{version}
 %patch003 -p1 -b .strnicmp-2-strncasecmp-bugfix
 %patch004 -p1 -b .rename-used-var-phy_file_path
 %patch005 -p1 -b .seqdump-missing-return-value
+%patch006 -p1 -b .replace-is_compat_task
 popd
 
 for kernel_version in %{?kernel_versions}; do
@@ -76,6 +78,10 @@ done
 rm -r -f $RPM_BUILD_ROOT
 
 %changelog
+* Mon Aug 01 2016 Marcelo 'codeN' Gonzalez <koaeH@aol.com> - 4.3.0.8-21
+- Rebuild for kernel-4.6.4-201.fc23
+- Patch s/is_compat_task/in_compat_syscall/ @os_dep/linux/rtw_android.c
+
 * Sun May 08 2016 Marcelo 'codeN' Gonzalez <koaeH@aol.com> - 4.3.0.8-20
 - Rebuild for kernel-4.4.8-300.fc23
 
